@@ -1,0 +1,158 @@
+@{
+    ViewData["Title"] = "Kết Quả Đăng Ký";
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<style>
+    .result-card-premium {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 32px;
+        box-shadow: var(--shadow-lg);
+        padding: 4rem 3rem;
+        text-align: center;
+        animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .result-card-premium::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(90deg, #10b981, #34d399);
+    }
+
+    @@keyframes slideUpFade {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .success-icon-wrapper {
+        width: 96px;
+        height: 96px;
+        background: #ecfdf5;
+        color: #10b981;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        margin: 0 auto 2.5rem;
+        box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.1);
+        border: 2px solid #d1fae5;
+    }
+
+    .badge-major-premium {
+        background: #eef2ff;
+        color: var(--primary);
+        padding: 0.75rem 2rem;
+        border-radius: 16px;
+        border: 1px solid #e0e7ff;
+        font-weight: 700;
+        font-size: 1.1rem;
+        display: inline-block;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .info-box-premium {
+        background: #f8fafc;
+        padding: 2rem;
+        border-radius: 24px;
+        margin-top: 2.5rem;
+        border: 1px solid #f1f5f9;
+    }
+
+    .count-display {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: #0f172a;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    }
+
+    .btn-back-premium {
+        margin-top: 3rem;
+        background: white;
+        border: 2px solid #e2e8f0;
+        color: var(--text-main);
+        padding: 0.875rem 2.5rem;
+        border-radius: 14px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .btn-back-premium:hover {
+        background: #f8fafc;
+        border-color: #cbd5e1;
+        transform: translateX(-5px);
+        color: var(--text-main);
+    }
+
+    .student-name {
+        color: #0f172a;
+        font-weight: 700;
+        position: relative;
+        display: inline-block;
+    }
+
+    .student-name::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: rgba(79, 70, 229, 0.1);
+        z-index: -1;
+    }
+</style>
+
+<div class="container py-5 mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="result-card-premium">
+                <div class="success-icon-wrapper">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+                
+                <h1 class="display-5 fw-bold mb-3" style="color: #0f172a;">Đăng Ký Thành Công!</h1>
+                
+                <p class="lead mb-4 text-muted">
+                    Hệ thống đã ghi nhận thông tin của sinh viên <br/>
+                    <span class="student-name">@ViewBag.HoTen</span> 
+                    <span class="ms-1 fw-medium">(@ViewBag.MSSV)</span>
+                </p>
+                
+                <div class="mb-2 text-uppercase small fw-bold text-muted letter-spacing-1">
+                    Chuyên ngành đã chọn
+                </div>
+                <div class="mb-4">
+                    <span class="badge-major-premium">
+                        <i class="bi bi-star-fill me-2 small"></i>@ViewBag.ChuyenNganh
+                    </span>
+                </div>
+                
+                <div class="info-box-premium">
+                    <div class="count-display">@ViewBag.SameMajorCount</div>
+                    <p class="text-muted fw-medium mb-0">
+                        Sinh viên khác cũng chọn chuyên ngành này
+                    </p>
+                </div>
+                
+                <a asp-action="Index" class="btn btn-back-premium">
+                    <i class="bi bi-arrow-left"></i> Trở về trang chủ
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
