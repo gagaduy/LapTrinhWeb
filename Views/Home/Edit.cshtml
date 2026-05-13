@@ -1,0 +1,35 @@
+@model Buoi4_B2.Models.TodoItem
+
+@{
+    ViewData["Title"] = "Sửa công việc";
+}
+
+<section class="exercise-page">
+    <div class="form-card">
+        <h1 class="form-heading">Sửa công việc</h1>
+
+        <form class="form-shell" asp-action="Edit" method="post">
+            <div class="field-grid">
+                <div class="field-row">
+                    <label class="form-label" asp-for="Id">Mã công việc</label>
+                    <input class="form-control todo-input" asp-for="Id" readonly />
+                </div>
+
+                <div class="field-row">
+                    <label class="form-label" asp-for="Name">Tên công việc</label>
+                    <input class="form-control todo-input" asp-for="Name" />
+                </div>
+            </div>
+
+            <div class="todo-check">
+                <input class="form-check-input" asp-for="IsCompleted" />
+                <label class="form-check-label" asp-for="IsCompleted">Đánh dấu hoàn thành</label>
+            </div>
+
+            <div class="form-actions">
+                <button class="btn form-button" type="submit">Lưu thay đổi</button>
+                <a class="back-link" asp-action="TodoList">Quay trở lại</a>
+            </div>
+        </form>
+    </div>
+</section>

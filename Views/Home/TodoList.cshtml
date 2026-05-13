@@ -1,0 +1,53 @@
+@model IReadOnlyList<Buoi4_B2.Models.TodoItem>
+
+@{
+    ViewData["Title"] = "Danh sách công việc";
+}
+
+<section class="exercise-page">
+    <div class="content-card todo-card">
+        <div class="todo-toolbar">
+            <div>
+                <h1 class="content-heading todo-heading">Danh sách công việc</h1>
+                <p class="todo-meta">Quản lý danh sách việc cần làm theo giao diện lấy cảm hứng từ Kraken.</p>
+            </div>
+            <a class="create-link" asp-action="Create">Tạo mới công việc</a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table todo-table">
+                <thead>
+                    <tr>
+                        <th>Mã công việc</th>
+                        <th>Tên công việc</th>
+                        <th>Trạng thái</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><span class="id-chip">#@item.Id</span></td>
+                        <td><span class="task-name">@item.Name</span></td>
+                        <td>
+                            <span class="status-badge @(item.IsCompleted ? "is-done" : string.Empty)">
+                                <span class="status-dot"></span>
+                                @(item.IsCompleted ? "Đã hoàn thành" : "Đang thực hiện")
+                            </span>
+                        </td>
+                        <td class="action-links">
+                            <a class="action-link" asp-action="Edit" asp-route-id="@item.Id">Sửa</a>
+                            <a class="action-link" asp-action="Details" asp-route-id="@item.Id">Chi tiết</a>
+                            <form class="inline-form" asp-action="Delete" method="post">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <button class="action-button danger" type="submit">Xoá</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

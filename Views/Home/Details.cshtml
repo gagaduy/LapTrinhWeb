@@ -1,0 +1,38 @@
+@model Buoi4_B2.Models.TodoItem
+
+@{
+    ViewData["Title"] = "Chi tiết công việc";
+}
+
+<section class="exercise-page">
+    <div class="form-card">
+        <h1 class="form-heading">Chi tiết công việc</h1>
+
+        <div class="detail-grid">
+            <div class="detail-card">
+                <div class="detail-label">Mã công việc</div>
+                <div class="detail-value">#@Model.Id</div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-label">Tên công việc</div>
+                <div class="detail-value">@Model.Name</div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-label">Trạng thái</div>
+                <div class="detail-value">
+                    <span class="status-badge @(Model.IsCompleted ? "is-done" : string.Empty)">
+                        <span class="status-dot"></span>
+                        @(Model.IsCompleted ? "Đã hoàn thành" : "Đang thực hiện")
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <a class="outline-link" asp-action="Edit" asp-route-id="@Model.Id">Sửa công việc</a>
+            <a class="back-link" asp-action="TodoList">Quay trở lại</a>
+        </div>
+    </div>
+</section>
