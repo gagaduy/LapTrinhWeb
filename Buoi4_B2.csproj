@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Buoi4_B2.Tests\**\*.cs" />
-    <Content Remove="Buoi4_B2.Tests\**\*" />
-    <EmbeddedResource Remove="Buoi4_B2.Tests\**\*" />
-    <None Remove="Buoi4_B2.Tests\**\*" />
     <Compile Remove="obj_verify\**\*" />
     <Content Remove="obj_verify\**\*" />
     <EmbeddedResource Remove="obj_verify\**\*" />
