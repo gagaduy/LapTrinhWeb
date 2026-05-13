@@ -1,5 +1,7 @@
 bin/
 obj/
+bin_verify/
+obj_verify/
 .vs/
 *.user
 *.suo
