@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BookDB</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Buoi5.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="site-header">
+        <nav class="site-nav container-fluid">
+            <a class="site-brand" asp-area="" asp-controller="Books" asp-action="Index">Trang Chu</a>
+            <div class="site-links">
+                <a asp-area="" asp-controller="Books" asp-action="Index">Danh sach sach</a>
+                <a asp-area="" asp-controller="Books" asp-action="Create">Them moi</a>
+                <a href="#">Dang ky</a>
+                <a href="#">Dang nhap</a>
+                <a asp-area="" asp-controller="Cart" asp-action="Index">Gio hang</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-shell">
+        <main role="main" class="page-main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container-fluid">
+            &copy; 2026 - Lap trinh Web
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

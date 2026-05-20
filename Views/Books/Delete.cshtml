@@ -1,0 +1,36 @@
+@model Buoi5.Models.Book
+
+@{
+    ViewData["Title"] = "Xoa sach";
+}
+
+<section class="form-shell">
+    <div class="form-card delete-card">
+        <div class="catalog-toolbar">
+            <div>
+                <p class="eyebrow">Canh bao</p>
+                <h1>Xoa sach</h1>
+            </div>
+        </div>
+
+        <p class="delete-message">Ban co chac muon xoa cuon sach nay khong?</p>
+
+        <div class="delete-preview">
+            <img src="~/images/books/@Model.Image" alt="@Model.Title" class="delete-image" />
+            <div>
+                <h2>@Model.Title</h2>
+                <p>Tac gia: @Model.Author</p>
+                <p>Chu de: @Model.Category?.CategoryName</p>
+                <p>Gia: @Model.Price.ToString("N0") VND</p>
+            </div>
+        </div>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-actions">
+                <button type="submit" class="btn btn-danger action-button">Xoa sach</button>
+                <a asp-action="Index" class="btn btn-outline-dark action-button secondary-action">Huy</a>
+            </div>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,76 @@
+@model Buoi5.Models.ViewModels.BookCatalogViewModel
+
+@{
+    ViewData["Title"] = "BookDB";
+}
+
+<section class="catalog-shell">
+    <aside class="category-sidebar">
+        <div class="sidebar-head">
+            <p class="eyebrow">BookDB</p>
+            <h2>Chu de</h2>
+        </div>
+
+        <ul class="category-list">
+            <li>
+                <a class="@(Model.SelectedCategoryId == null ? "is-active" : "")" asp-action="Index">
+                    Tat ca (@Model.Categories.Sum(c => c.BookCount))
+                </a>
+            </li>
+            @foreach (var category in Model.Categories)
+            {
+                <li>
+                    <a class="@(Model.SelectedCategoryId == category.CategoryId ? "is-active" : "")"
+                       asp-action="Index"
+                       asp-route-categoryId="@category.CategoryId">
+                        @category.CategoryName (@category.BookCount)
+                    </a>
+                </li>
+            }
+        </ul>
+    </aside>
+
+    <div class="catalog-main">
+        <div class="catalog-toolbar">
+            <div>
+                <p class="eyebrow">ASM5</p>
+                <h1>Danh sach sach</h1>
+            </div>
+            <a asp-action="Create" class="btn btn-dark action-button">Them moi</a>
+        </div>
+
+        @if (!Model.Books.Any())
+        {
+            <div class="empty-state">
+                Khong co sach nao trong chu de nay.
+            </div>
+        }
+        else
+        {
+            <div class="book-grid">
+                @foreach (var book in Model.Books)
+                {
+                    <article class="book-card">
+                        <div class="book-card-top">
+                            <div>
+                                <h3>@book.Title</h3>
+                                <p class="book-meta">Tac gia: @book.Author</p>
+                                <p class="book-meta">The loai: @book.Category?.CategoryName</p>
+                            </div>
+                            <a asp-action="Edit" asp-route-id="@book.Id" class="edit-link">Edit</a>
+                        </div>
+
+                        <div class="book-cover-wrap">
+                            <img src="~/images/books/@book.Image" alt="@book.Title" class="book-cover" />
+                        </div>
+
+                        <div class="book-card-bottom">
+                            <a asp-action="Details" asp-route-id="@book.Id" class="btn btn-light btn-sm">Chi tiet</a>
+                            <a asp-action="Delete" asp-route-id="@book.Id" class="btn btn-success btn-sm">Xoa</a>
+                        </div>
+                    </article>
+                }
+            </div>
+        }
+    </div>
+</section>

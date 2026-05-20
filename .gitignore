@@ -1,0 +1,8 @@
+bin/
+obj/
+.vs/
+.vscode/
+run.out.log
+run.err.log
+run2.out.log
+run2.err.log

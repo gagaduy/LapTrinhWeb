@@ -1,0 +1,30 @@
+@model Buoi5.Models.Book
+
+@{
+    ViewData["Title"] = "Sua sach";
+}
+
+<section class="form-shell">
+    <div class="form-card">
+        <div class="catalog-toolbar">
+            <div>
+                <p class="eyebrow">BookDB</p>
+                <h1>Chinh sua sach</h1>
+            </div>
+        </div>
+
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            <partial name="_BookFormFields" model="Model" />
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-dark action-button">Cap nhat</button>
+                <a asp-action="Index" class="btn btn-outline-dark action-button secondary-action">Quay lai</a>
+            </div>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

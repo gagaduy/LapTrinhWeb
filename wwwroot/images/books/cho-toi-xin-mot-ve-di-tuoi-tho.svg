@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="560" viewBox="0 0 400 560">
+  <rect width="400" height="560" rx="24" fill="#18b6e3"/>
+  <rect x="24" y="24" width="352" height="512" rx="16" fill="#1ab9e7"/>
+  <text x="40" y="90" fill="#0d3b4a" font-family="Georgia, serif" font-size="42">nguyen nhat anh</text>
+  <rect x="80" y="180" width="240" height="110" rx="10" fill="#f5f4e8"/>
+  <path d="M120 290 L200 200 L280 290 Z" fill="#d9d6c7"/>
+  <circle cx="200" cy="250" r="16" fill="#ffcf9f"/>
+  <text x="92" y="372" fill="#ffffff" font-family="Courier New, monospace" font-size="34">cho toi xin mot</text>
+  <text x="110" y="410" fill="#ffffff" font-family="Courier New, monospace" font-size="34">ve di tuoi tho</text>
+  <text x="135" y="490" fill="#06546a" font-family="Arial, sans-serif" font-size="24">NXB Tre</text>
+</svg>

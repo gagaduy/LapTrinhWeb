@@ -1,0 +1,46 @@
+@model Buoi5.Models.Book
+
+@{
+    ViewData["Title"] = "Chi tiet sach";
+}
+
+<section class="detail-shell">
+    <aside class="category-sidebar">
+        <div class="sidebar-head">
+            <p class="eyebrow">Danh muc</p>
+            <h2>Chu de</h2>
+        </div>
+        <ul class="category-list">
+            <li><a asp-action="Index">Quay lai danh sach</a></li>
+        </ul>
+    </aside>
+
+    <div class="detail-main">
+        <div class="catalog-toolbar">
+            <div>
+                <p class="eyebrow">Thong tin chi tiet sach</p>
+                <h1>@Model.Title</h1>
+            </div>
+        </div>
+
+        <div class="detail-card">
+            <div class="detail-image-panel">
+                <img src="~/images/books/@Model.Image" alt="@Model.Title" class="detail-image" />
+            </div>
+
+            <div class="detail-content">
+                <p class="detail-category">@Model.Category?.CategoryName</p>
+                <h2>@Model.Title</h2>
+                <p class="detail-author">Tac gia: @Model.Author</p>
+                <p class="detail-description">@Model.Description</p>
+                <p class="detail-price">@Model.Price.ToString("N0") VND</p>
+
+                <div class="detail-actions">
+                    <a asp-controller="Cart" asp-action="Index" class="btn btn-primary action-button buy-action">Dat mua</a>
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-dark action-button">Sua sach</a>
+                    <a asp-action="Index" class="btn btn-outline-dark action-button secondary-action">Quay lai</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
