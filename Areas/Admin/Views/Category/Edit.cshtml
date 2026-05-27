@@ -1,0 +1,33 @@
+@model Buoi6.Models.Category
+
+@{
+    ViewData["Title"] = "Sửa Danh mục";
+}
+
+<div class="mt-4 mb-5 mx-auto" style="max-width: 600px;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="typography-heading-2">Chỉnh sửa Danh mục</h1>
+        <a asp-action="Index" class="button-secondary">Quay lại danh sách</a>
+    </div>
+
+    <div class="card-base">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <input type="hidden" asp-for="Id" />
+            
+            <div class="mb-4">
+                <label asp-for="Name" class="typography-body-sm-medium mb-2 d-block text-slate"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger typography-body-sm mt-1"></span>
+            </div>
+            
+            <div class="pt-3 border-top mt-4 text-end">
+                <input type="submit" value="Lưu thay đổi" class="button-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

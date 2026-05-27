@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Buoi6</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Buoi6.styles.css" asp-append-version="true" />
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="top-nav px-4">
+            <div class="container-fluid d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <a class="nav-link-notion fw-bold fs-5 me-4" style="color: var(--color-ink-deep);" asp-area="" asp-controller="Home" asp-action="Index">Buoi6</a>
+                    <div class="d-none d-md-flex">
+                        <a class="nav-link-notion" asp-area="" asp-controller="Home" asp-action="Index">Product</a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a class="nav-link-notion" asp-area="Admin" asp-controller="Product" asp-action="Index">Quản lý Sản phẩm</a>
+                            <a class="nav-link-notion" asp-area="Admin" asp-controller="Category" asp-action="Index">Quản lý Danh mục</a>
+                        }
+                    </div>
+                </div>
+                <div>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="flex-grow-1 d-flex flex-column">
+        <main role="main" class="flex-grow-1">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer-region mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3" style="color: var(--color-ink-deep);">Buoi6</h5>
+                    <a href="#" class="footer-link">Download</a>
+                    <a href="#" class="footer-link">Pricing</a>
+                    <a href="#" class="footer-link">Mac & Windows</a>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3" style="color: var(--color-ink-deep);">Resources</h5>
+                    <a href="#" class="footer-link">Blog</a>
+                    <a href="#" class="footer-link">Guides & tutorials</a>
+                    <a href="#" class="footer-link">Help center</a>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3" style="color: var(--color-ink-deep);">Company</h5>
+                    <a href="#" class="footer-link">About us</a>
+                    <a href="#" class="footer-link">Careers</a>
+                    <a href="#" class="footer-link">Media kit</a>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3" style="color: var(--color-ink-deep);">Legal</h5>
+                    <a asp-area="" asp-controller="Home" asp-action="Privacy" class="footer-link">Privacy policy</a>
+                    <a href="#" class="footer-link">Terms & privacy</a>
+                </div>
+            </div>
+            <div class="mt-4 pt-3 border-top" style="border-color: var(--color-hairline) !important;">
+                <p class="mb-0 text-muted" style="font-size: 13px;">&copy; 2026 Buoi6. Đã đăng ký bản quyền.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

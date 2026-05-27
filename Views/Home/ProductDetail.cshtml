@@ -1,0 +1,21 @@
+@model Buoi6.Models.Product
+
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+}
+
+<div class="row mt-4">
+    <div class="col-md-5">
+        <img src="@Model.ImageUrl" class="img-fluid rounded" alt="@Model.Name" onerror="this.src='https://via.placeholder.com/400'">
+    </div>
+    <div class="col-md-7">
+        <h2>@Model.Name</h2>
+        <h4 class="text-danger">@Model.Price.ToString("N0") VNĐ</h4>
+        <p class="mt-3"><strong>Danh mục:</strong> @Model.Category?.Name</p>
+        <div class="mt-4">
+            <h4>Mô tả sản phẩm</h4>
+            <p>@Model.Description</p>
+        </div>
+        <a asp-action="Index" class="btn btn-secondary mt-3">Quay lại trang chủ</a>
+    </div>
+</div>

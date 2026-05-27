@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* Brand & Primary */
+  --color-primary: #9b51e0;
+  --color-primary-pressed: #8243be;
+  --color-brand-navy: #000b21;
+  --color-brand-navy-mid: #0a1b38;
+  --color-link-blue: #0b5cff;
+
+  /* Brand Color Spectrum */
+  --color-brand-orange-deep: #b54708;
+  --color-brand-teal: #158f91;
+  
+  /* Pastels for badges */
+  --color-card-tint-peach: #ffefe5;
+  --color-card-tint-sky: #e1f4fc;
+  --color-card-tint-mint: #e2f5ee;
+
+  /* Surface */
+  --color-canvas: #ffffff;
+  --color-surface: #f7f7f5;
+  --color-surface-soft: #fcfcfc;
+  --color-hairline: #e6e6e6;
+  --color-hairline-strong: #d9d9d9;
+
+  /* Text */
+  --color-ink-deep: #0f0f0f;
+  --color-ink: #2a2a2a;
+  --color-slate: #5f5f5f;
+  --color-steel: #8f8f8f;
+  --color-on-dark: #ffffff;
+  --color-on-dark-muted: rgba(255, 255, 255, 0.7);
+
+  /* Spacing & Rounded */
+  --rounded-sm: 6px;
+  --rounded-md: 8px;
+  --rounded-lg: 12px;
+  --font-notion: 'Inter', -apple-system, system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-notion);
+  background-color: var(--color-surface-soft);
+  color: var(--color-ink);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Typography Classes */
+.typography-hero-display { font-size: 56px; font-weight: 600; line-height: 1.1; letter-spacing: -1px; }
+.typography-heading-2 { font-size: 32px; font-weight: 600; line-height: 1.2; }
+.typography-heading-4 { font-size: 20px; font-weight: 600; line-height: 1.3; }
+.typography-subtitle { font-size: 18px; font-weight: 400; color: var(--color-on-dark-muted); }
+.typography-body-md { font-size: 15px; font-weight: 500; }
+.typography-body-sm { font-size: 14px; color: var(--color-slate); }
+
+/* Buttons */
+.button-primary {
+  background: var(--color-primary); color: white;
+  padding: 10px 20px; border-radius: var(--rounded-md); font-weight: 500; text-decoration: none; border: none;
+  transition: background 0.2s ease; display: inline-block;
+}
+.button-primary:hover { background: var(--color-primary-pressed); color: white; }
+
+.button-secondary {
+  background: transparent; color: var(--color-ink);
+  border: 1px solid var(--color-hairline-strong); padding: 10px 20px; border-radius: var(--rounded-md);
+  font-weight: 500; text-decoration: none; transition: background 0.2s ease; display: inline-block;
+}
+.button-secondary:hover { background: var(--color-hairline); color: var(--color-ink); }
+
+/* Hero */
+.hero-band-modern {
+  background: linear-gradient(135deg, var(--color-brand-navy) 0%, var(--color-brand-navy-mid) 100%);
+  padding: 80px 20px; text-align: center; color: white;
+}
+
+/* Layout */
+.top-nav { background: white; border-bottom: 1px solid var(--color-hairline); position: sticky; top: 0; z-index: 100; min-height: 64px; }
+.nav-link-notion { color: var(--color-ink); padding: 8px 16px; text-decoration: none; font-weight: 500; border-radius: var(--rounded-sm); transition: background 0.2s; display: block;}
+.nav-link-notion:hover { background: var(--color-surface); color: var(--color-ink); }
+
+.card-base { background: white; border-radius: var(--rounded-lg); padding: 24px; border: 1px solid var(--color-hairline); }
+
+/* E-commerce Product Card */
+.card-product {
+  background: white;
+  border-radius: var(--rounded-lg);
+  border: 1px solid var(--color-hairline);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.card-product:hover {
+  transform: translateY(-4px);
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 12px 24px -8px;
+}
+.card-product-img-wrapper {
+  background: var(--color-surface);
+  height: 220px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.card-product-img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.card-product-body {
+  padding: 20px; flex-grow: 1; display: flex; flex-direction: column;
+}
+
+/* Table */
+.table-notion { width: 100%; border-collapse: collapse; }
+.table-notion th { background: var(--color-surface); border-bottom: 1px solid var(--color-hairline-strong); padding: 12px 16px; font-weight: 600; text-align: left; }
+.table-notion td { padding: 12px 16px; border-bottom: 1px solid var(--color-hairline); }
+
+.footer-region { background: white; border-top: 1px solid var(--color-hairline); padding: 40px 0 20px 0; }
+.footer-link { color: var(--color-slate); text-decoration: none; display: block; padding: 4px 0; }
+.footer-link:hover { color: var(--color-ink); text-decoration: underline; }
+
+/* Forms */
+.form-control, .form-select { border-radius: var(--rounded-md); border: 1px solid var(--color-hairline-strong); padding: 10px 14px; }
+.form-control:focus, .form-select:focus { border-color: var(--color-primary); box-shadow: 0 0 0 1px var(--color-primary); }

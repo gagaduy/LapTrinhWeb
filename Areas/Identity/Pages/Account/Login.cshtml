@@ -1,0 +1,53 @@
+@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Đăng nhập";
+}
+
+<div class="d-flex justify-content-center align-items-center mt-5 mb-5">
+    <div class="card-base w-100" style="max-width: 400px; padding: 40px;">
+        <div class="text-center mb-4">
+            <h1 class="typography-heading-2 mb-2">Đăng nhập</h1>
+            <p class="typography-body-sm text-slate">Chào mừng bạn trở lại với hệ thống</p>
+        </div>
+        
+        <form id="account" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+            
+            <div class="mb-3">
+                <label asp-for="Input.Email" class="typography-body-sm-medium mb-1 d-block text-slate">Email</label>
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <span asp-validation-for="Input.Email" class="text-danger typography-body-sm mt-1"></span>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="Input.Password" class="typography-body-sm-medium mb-1 d-block text-slate">Mật khẩu</label>
+                <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="••••••••" />
+                <span asp-validation-for="Input.Password" class="text-danger typography-body-sm mt-1"></span>
+            </div>
+            
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="form-check">
+                    <input class="form-check-input" asp-for="Input.RememberMe" id="rememberMe" />
+                    <label class="form-check-label typography-body-sm text-slate" for="rememberMe">
+                        Ghi nhớ
+                    </label>
+                </div>
+                <a id="forgot-password" asp-page="./ForgotPassword" class="button-link" style="font-size: 13px;">Quên mật khẩu?</a>
+            </div>
+            
+            <button id="login-submit" type="submit" class="button-primary w-100 py-2 mb-3">Đăng nhập</button>
+            
+            <div class="text-center mt-4 pt-3 border-top" style="border-color: var(--color-hairline) !important;">
+                <p class="typography-body-sm text-slate mb-0">
+                    Chưa có tài khoản? <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="button-link fw-bold">Đăng ký ngay</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

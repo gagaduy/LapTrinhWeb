@@ -1,0 +1,62 @@
+@model Buoi6.Models.Product
+
+@{
+    ViewData["Title"] = "Chỉnh sửa Sản phẩm";
+}
+
+<div class="mt-4 mb-5 mx-auto" style="max-width: 600px;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="typography-heading-2">Chỉnh sửa Sản phẩm</h1>
+        <a asp-action="Index" class="button-secondary">Quay lại danh sách</a>
+    </div>
+
+    <div class="card-base">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <input type="hidden" asp-for="Id" />
+            
+            <div class="mb-4">
+                <label asp-for="Name" class="typography-body-sm-medium mb-2 d-block text-slate"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger typography-body-sm mt-1"></span>
+            </div>
+            
+            <div class="mb-4">
+                <label asp-for="Price" class="typography-body-sm-medium mb-2 d-block text-slate"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger typography-body-sm mt-1"></span>
+            </div>
+            
+            <div class="mb-4">
+                <label asp-for="CategoryId" class="typography-body-sm-medium mb-2 d-block text-slate">Danh mục</label>
+                <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories"></select>
+            </div>
+            
+            <div class="mb-4">
+                <label asp-for="Description" class="typography-body-sm-medium mb-2 d-block text-slate"></label>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Description" class="text-danger typography-body-sm mt-1"></span>
+            </div>
+            
+            <div class="mb-4">
+                <label class="typography-body-sm-medium mb-2 d-block text-slate">Hình ảnh hiện tại</label>
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <img src="@Model.ImageUrl" alt="Current Image" class="mb-3 rounded" style="max-width: 150px; border: 1px solid var(--color-hairline);" />
+                }
+                
+                <label asp-for="ImageUrl" class="typography-body-sm-medium mb-2 d-block text-slate">Cập nhật ảnh mới (Tuỳ chọn)</label>
+                <input type="file" name="imageUrl" class="form-control" />
+                <input type="hidden" asp-for="ImageUrl" />
+            </div>
+            
+            <div class="pt-3 border-top mt-4 text-end">
+                <input type="submit" value="Lưu thay đổi" class="button-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

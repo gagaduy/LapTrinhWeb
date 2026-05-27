@@ -1,0 +1,20 @@
+@using Microsoft.AspNetCore.Identity
+@using Buoi6.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<div class="d-flex align-items-center">
+@if (SignInManager.IsSignedIn(User))
+{
+    <a id="manage" class="nav-link-notion me-3" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Xin chào, @UserManager.GetUserName(User)!</a>
+    <form id="logoutForm" class="form-inline m-0 p-0" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+        <button id="logout" type="submit" class="button-secondary">Logout</button>
+    </form>
+}
+else
+{
+    <a class="nav-link-notion me-2" id="login" asp-area="Identity" asp-page="/Account/Login">Log in</a>
+    <a class="button-primary" id="register" asp-area="Identity" asp-page="/Account/Register">Đăng ký</a>
+}
+</div>
