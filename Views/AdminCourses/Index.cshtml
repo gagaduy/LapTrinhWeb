@@ -1,0 +1,53 @@
+@model IReadOnlyList<KiemTraGiuaKy.Models.Course>
+@{
+    ViewData["Title"] = "Admin Courses";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <p class="text-uppercase course-kicker small mb-1">Admin</p>
+        <h1 class="h3 mb-0">Quan ly hoc phan</h1>
+    </div>
+    <a asp-action="Create" class="btn btn-primary">Them hoc phan</a>
+</div>
+
+@if (TempData["SuccessMessage"] is string successMessage)
+{
+    <div class="alert alert-success">@successMessage</div>
+}
+
+<div class="card border-0 shadow-sm admin-panel">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0 admin-table">
+                <thead>
+                    <tr>
+                        <th>Ten</th>
+                        <th>Danh muc</th>
+                        <th>Giang vien</th>
+                        <th>Tin chi</th>
+                        <th class="text-end">Tac vu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var course in Model)
+                {
+                    <tr>
+                        <td>@course.Name</td>
+                        <td>@course.Category?.Name</td>
+                        <td>@course.Lecturer</td>
+                        <td><span class="badge course-credit-badge">@course.Credits tin chi</span></td>
+                        <td class="text-end">
+                            <a asp-action="Edit" asp-route-id="@course.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                            <form asp-action="Delete" asp-route-id="@course.Id" method="post" class="d-inline">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

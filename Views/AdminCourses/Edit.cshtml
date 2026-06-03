@@ -1,0 +1,12 @@
+@model KiemTraGiuaKy.ViewModels.Courses.CourseFormViewModel
+@{
+    ViewData["Title"] = "Edit Course";
+}
+
+<p class="text-uppercase course-kicker small mb-1">Admin</p>
+<h1 class="h3 mb-4">Cap nhat hoc phan</h1>
+<partial name="_CourseForm" model="Model" />
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

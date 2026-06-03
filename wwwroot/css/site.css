@@ -1,0 +1,124 @@
+:root {
+  --bg: #f4efe8;
+  --paper: #fffdf8;
+  --ink: #172121;
+  --muted: #667085;
+  --accent: #0f766e;
+  --accent-strong: #115e59;
+  --warm: #f59e0b;
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body.app-shell {
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top right, rgba(245, 158, 11, 0.16), transparent 28%),
+    radial-gradient(circle at left center, rgba(15, 118, 110, 0.14), transparent 34%),
+    var(--bg);
+}
+
+.app-navbar {
+  background: linear-gradient(135deg, #0f172a, #134e4a);
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus,
+.form-select:focus {
+  box-shadow: 0 0 0 0.1rem rgba(255, 255, 255, 0.5), 0 0 0 0.25rem rgba(15, 118, 110, 0.25);
+}
+
+.course-search {
+  min-width: min(100%, 420px);
+}
+
+.course-card {
+  overflow: hidden;
+  background: var(--paper);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-card .card-body {
+  color: var(--ink);
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1rem 2.5rem rgba(15, 23, 42, 0.08);
+}
+
+.course-image {
+  height: 220px;
+  object-fit: cover;
+}
+
+.course-kicker {
+  color: var(--accent-strong);
+  letter-spacing: 0.08em;
+}
+
+.course-subtitle {
+  color: #415266;
+  font-weight: 500;
+}
+
+.course-title {
+  color: #102033;
+  font-weight: 700;
+}
+
+.course-lecturer {
+  color: #334155;
+  font-size: 1rem;
+}
+
+.course-lecturer strong {
+  color: #1e293b;
+}
+
+.course-category-badge {
+  background: #e7f6f3;
+  color: #0f5c54;
+  border: 1px solid #b7dfd8;
+}
+
+.course-credit-badge {
+  background: #16243a;
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+.admin-panel {
+  background: rgba(255, 253, 248, 0.96);
+}
+
+.admin-table th {
+  color: #1f2937;
+  font-weight: 700;
+  border-bottom-color: rgba(15, 23, 42, 0.12);
+}
+
+.admin-table td {
+  color: #243244;
+  vertical-align: middle;
+}
+
+.admin-table tbody tr:hover {
+  background: rgba(15, 118, 110, 0.05);
+}
+
+.footer {
+  background: transparent;
+}

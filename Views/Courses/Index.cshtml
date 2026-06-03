@@ -1,0 +1,85 @@
+@model KiemTraGiuaKy.ViewModels.Courses.CourseListViewModel
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<section class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-4">
+    <div>
+        <p class="text-uppercase course-kicker small mb-1">Course Registration</p>
+        <h1 class="display-6 fw-semibold mb-1">@Model.Title</h1>
+        <p class="course-subtitle mb-0">Tim kiem, dang ky va quan ly hoc phan tren mot giao dien responsive.</p>
+    </div>
+    <form asp-controller="Courses" asp-action="Index" method="get" class="d-flex gap-2 course-search">
+        <input asp-for="SearchTerm" name="searchTerm" class="form-control" placeholder="Tim theo ten hoc phan" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</section>
+
+@if (TempData["SuccessMessage"] is string successMessage)
+{
+    <div class="alert alert-success">@successMessage</div>
+}
+
+@if (TempData["ErrorMessage"] is string errorMessage)
+{
+    <div class="alert alert-danger">@errorMessage</div>
+}
+
+<div class="row g-4">
+    @foreach (var course in Model.Courses)
+    {
+        <div class="col-md-6 col-xl-4">
+            <article class="card h-100 shadow-sm border-0 course-card">
+                <img src="@course.Image" class="card-img-top course-image" alt="@course.Name" />
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start gap-2 mb-3">
+                        <div>
+                            <span class="badge course-category-badge">@course.CategoryName</span>
+                            <h2 class="h5 mt-2 mb-1 course-title">@course.Name</h2>
+                        </div>
+                        <span class="badge course-credit-badge">@course.Credits tin chi</span>
+                    </div>
+                    <p class="course-lecturer mb-4">Giang vien: <strong>@course.Lecturer</strong></p>
+                    @if (Model.IsStudent)
+                    {
+                        <div class="mt-auto">
+                            @if (course.IsEnrolled)
+                            {
+                                <form asp-controller="Enrollments" asp-action="Delete" asp-route-courseId="@course.Id" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-outline-danger w-100">Huy dang ky</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <form asp-controller="Enrollments" asp-action="Create" asp-route-courseId="@course.Id" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-primary w-100">Enroll</button>
+                                </form>
+                            }
+                        </div>
+                    }
+                </div>
+            </article>
+        </div>
+    }
+</div>
+
+@if (!Model.Courses.Any())
+{
+    <div class="alert alert-warning mt-4 mb-0">Khong tim thay hoc phan phu hop.</div>
+}
+
+@if (Model.Paging.TotalPages > 1)
+{
+    <nav class="mt-4" aria-label="Pagination">
+        <ul class="pagination justify-content-center">
+            @for (var pageNumber = 1; pageNumber <= Model.Paging.TotalPages; pageNumber++)
+            {
+                <li class="page-item @(pageNumber == Model.Paging.Page ? "active" : "")">
+                    <a class="page-link" asp-action="Index" asp-route-page="@pageNumber" asp-route-searchTerm="@Model.SearchTerm">@pageNumber</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}
